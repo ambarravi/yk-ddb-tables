@@ -11,6 +11,14 @@ Resources:
           AttributeType: S
         - AttributeName: Email
           AttributeType: S
+        - AttributeName: Role
+          AttributeType: S
+        - AttributeName: RegisteredEvents
+          AttributeType: SS  # String Set for List of EventIDs
+        - AttributeName: LastLogin
+          AttributeType: S
+        - AttributeName: CreatedAt
+          AttributeType: S
       KeySchema:
         - AttributeName: UserID
           KeyType: HASH  # Partition key (primary key)
@@ -23,7 +31,6 @@ Resources:
       StreamSpecification:
         StreamViewType: NEW_AND_OLD_IMAGES  # Optionally enable streams if needed
 
-      # Additional attributes for table
       GlobalSecondaryIndexes:
         - IndexName: "EmailIndex"
           KeySchema:
@@ -43,26 +50,3 @@ Resources:
           ProvisionedThroughput:
             ReadCapacityUnits: 5
             WriteCapacityUnits: 5
-
-      # Additional table fields, but these are not part of the key schema
-      AttributeDefinitions:
-        - AttributeName: FirstName
-          AttributeType: S
-        - AttributeName: LastName
-          AttributeType: S
-        - AttributeName: Mobile
-          AttributeType: S
-        - AttributeName: Address
-          AttributeType: S
-        - AttributeName: Country
-          AttributeType: S
-        - AttributeName: City
-          AttributeType: S
-        - AttributeName: RegisteredEvents
-          AttributeType: SS  # String Set for List of EventIDs
-        - AttributeName: CreatedAt
-          AttributeType: S  # ISO 8601 Date string
-        - AttributeName: LastLogin
-          AttributeType: S  # ISO 8601 Date string
-        - AttributeName: Organization
-          AttributeType: S
