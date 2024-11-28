@@ -1,0 +1,31 @@
+name: Deploy DynamoDB Table
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+    paths:
+      - 'templates/user-table.yml'  # Trigger only when DynamoDB template is changed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Use the latest v3 version
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2  # Use v2 for latest support
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ github.ref == 'refs/heads/main' && 'us-west-2' || 'eu-west-1' }}   
+
+      - name: Deploy DynamoDB Table
+        run: |
+          aws cloudformation deploy \
+            --template-file templates/user-table.yml \
+            --stack-name yojanaakar-ddb-stack \
+            --capabilities CAPABILITY_NAMED_IAM

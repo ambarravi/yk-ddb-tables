@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template for DynamoDB table to store user information for ticket booking platform.
+
+Resources:
+  UserTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: UserTable
+      AttributeDefinitions:
+        - AttributeName: UserID
+          AttributeType: S
+        - AttributeName: Email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: UserID
+          KeyType: HASH  # Partition key (primary key)
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TimeToLiveSpecification:
+        AttributeName: "LastLogin"
+        Enabled: true
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES  # Optionally enable streams if needed
+
+      # Additional attributes for table
+      GlobalSecondaryIndexes:
+        - IndexName: "EmailIndex"
+          KeySchema:
+            - AttributeName: Email
+              KeyType: HASH  # Secondary index to query by Email
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+        - IndexName: "RoleIndex"
+          KeySchema:
+            - AttributeName: Role
+              KeyType: HASH  # Secondary index to query by Role
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+
+      # Additional table fields, but these are not part of the key schema
+      AttributeDefinitions:
+        - AttributeName: FirstName
+          AttributeType: S
+        - AttributeName: LastName
+          AttributeType: S
+        - AttributeName: Mobile
+          AttributeType: S
+        - AttributeName: Address
+          AttributeType: S
+        - AttributeName: Country
+          AttributeType: S
+        - AttributeName: City
+          AttributeType: S
+        - AttributeName: RegisteredEvents
+          AttributeType: SS  # String Set for List of EventIDs
+        - AttributeName: CreatedAt
+          AttributeType: S  # ISO 8601 Date string
+        - AttributeName: LastLogin
+          AttributeType: S  # ISO 8601 Date string
+        - AttributeName: Organization
+          AttributeType: S
