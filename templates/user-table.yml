@@ -1,8 +1,8 @@
 Resources:
-  UserTable:
+  UsersTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: UserTable
+      TableName: UsersTable
       AttributeDefinitions:
         - AttributeName: UserID
           AttributeType: S
