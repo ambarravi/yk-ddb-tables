@@ -28,4 +28,5 @@ jobs:
           aws cloudformation deploy \
             --template-file templates/user-table.yml \
             --stack-name yojanaakar-ddb-stack \
-            --capabilities CAPABILITY_NAMED_IAM
+            --capabilities CAPABILITY_NAMED_IAM \
+            --disable-rollback

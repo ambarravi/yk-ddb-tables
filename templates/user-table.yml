@@ -1,6 +1,3 @@
-AWSTemplateFormatVersion: "2010-09-09"
-Description: CloudFormation template for DynamoDB table to store user information for ticket booking platform.
-
 Resources:
   UserTable:
     Type: AWS::DynamoDB::Table
@@ -11,40 +8,17 @@ Resources:
           AttributeType: S
         - AttributeName: Email
           AttributeType: S
-        - AttributeName: Role
-          AttributeType: S
-        - AttributeName: RegisteredEvents
-          AttributeType: SS  # String Set for List of EventIDs
-        - AttributeName: LastLogin
-          AttributeType: S
-        - AttributeName: CreatedAt
-          AttributeType: S
       KeySchema:
         - AttributeName: UserID
-          KeyType: HASH  # Partition key (primary key)
+          KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
-      TimeToLiveSpecification:
-        AttributeName: "LastLogin"
-        Enabled: true
-      StreamSpecification:
-        StreamViewType: NEW_AND_OLD_IMAGES  # Optionally enable streams if needed
-
       GlobalSecondaryIndexes:
-        - IndexName: "EmailIndex"
+        - IndexName: EmailIndex
           KeySchema:
             - AttributeName: Email
-              KeyType: HASH  # Secondary index to query by Email
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 5
-        - IndexName: "RoleIndex"
-          KeySchema:
-            - AttributeName: Role
-              KeyType: HASH  # Secondary index to query by Role
+              KeyType: HASH
           Projection:
             ProjectionType: ALL
           ProvisionedThroughput:
