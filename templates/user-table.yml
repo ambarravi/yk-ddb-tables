@@ -11,9 +11,7 @@ Resources:
       KeySchema:
         - AttributeName: UserID
           KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
+      BillingMode: PAY_PER_REQUEST  # Switch to on-demand mode
       GlobalSecondaryIndexes:
         - IndexName: EmailIndex
           KeySchema:
@@ -21,6 +19,3 @@ Resources:
               KeyType: HASH
           Projection:
             ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 5
