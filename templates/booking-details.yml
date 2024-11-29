@@ -1,3 +1,4 @@
+# Table details
 Resources:
   OrganizerTable:
     Type: AWS::DynamoDB::Table
