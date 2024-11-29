@@ -25,8 +25,9 @@ jobs:
 
       - name: Deploy DynamoDB Table
         run: |
-          aws cloudformation deploy \
-            --template-file templates/user-table.yml \
-            --stack-name yak-ddb-stack \
-            --capabilities CAPABILITY_NAMED_IAM \
-            --disable-rollback
+          aws cloudformation deploy --template-file templates/user-table.yml --stack-name yak-user-table-stack --capabilities CAPABILITY_NAMED_IAM
+          aws cloudformation deploy --template-file templates/organizer-table.yml --stack-name yak-organizer-table-stack --capabilities CAPABILITY_NAMED_IAM
+          aws cloudformation deploy --template-file templates/notification-details.yml --stack-name yak-notification-details-stack --capabilities CAPABILITY_NAMED_IAM
+          aws cloudformation deploy --template-file templates/event-details.yml --stack-name yak-event-details-stack --capabilities CAPABILITY_NAMED_IAM
+          aws cloudformation deploy --template-file templates/booking-details.yml --stack-name yak-booking-details-stack --capabilities CAPABILITY_NAMED_IAM
+

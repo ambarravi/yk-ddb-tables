@@ -1,0 +1,14 @@
+Resources:
+  OrganizerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Organizer
+      AttributeDefinitions:
+        - AttributeName: OrganizerID
+          AttributeType: S
+        - AttributeName: Email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: OrganizerID
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST  # Switch to on-demand mode

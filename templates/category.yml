@@ -1,0 +1,12 @@
+Resources:
+  OrganizerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Category
+      AttributeDefinitions:
+        - AttributeName: CategoryID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: CategoryID
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST  # Switch to on-demand mode

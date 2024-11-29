@@ -1,0 +1,14 @@
+Resources:
+  OrganizerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: NotificaionDetails
+      AttributeDefinitions:
+        - AttributeName: NotificationID
+          AttributeType: S
+        - AttributeName: EventID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: NotificationID
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST  # Switch to on-demand mode

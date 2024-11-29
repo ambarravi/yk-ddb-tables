@@ -1,0 +1,14 @@
+Resources:
+  OrganizerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: BookingDetails
+      AttributeDefinitions:
+        - AttributeName: BookingID
+          AttributeType: S
+        - AttributeName: EventID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: BookingID
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST  # Switch to on-demand mode
