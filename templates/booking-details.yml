@@ -1,4 +1,4 @@
-# Table details
+# Table details for Booking details
 Resources:
   OrganizerTable:
     Type: AWS::DynamoDB::Table
