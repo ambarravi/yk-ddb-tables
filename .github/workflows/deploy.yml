@@ -6,7 +6,12 @@ on:
       - dev
       - main
     paths:
-      - 'templates/user-table.yml'  # Trigger only when DynamoDB template is changed
+      - 'templates/user-table.yml'
+      - 'templates/booking-details.yml'
+      - 'templates/category.yml'
+      - 'templates/event-details.yml'
+      - 'templates/organizer-table.yml'  # Trigger only when DynamoDB template is changed
+      - 'templates/notification-details.yml'
 
 jobs:
   deploy:
