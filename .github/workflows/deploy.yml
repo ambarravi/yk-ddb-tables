@@ -11,7 +11,7 @@ on:
       - 'templates/category.yml'
       - 'templates/event-details.yml'
       - 'templates/organizer-table.yml'  # Trigger only when DynamoDB template is changed
-      - 'templates/notification-details.yml'
+      - 'templates/notification-details.yml' # added comment for checkin
 
 jobs:
   deploy:
