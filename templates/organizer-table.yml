@@ -6,8 +6,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: OrganizerID
           AttributeType: S
-        - AttributeName: Email
-          AttributeType: S
       KeySchema:
         - AttributeName: OrganizerID
           KeyType: HASH

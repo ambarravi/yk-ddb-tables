@@ -6,8 +6,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: EventID
           AttributeType: S
-        - AttributeName: OrganizerID
-          AttributeType: S
       KeySchema:
         - AttributeName: EventID
           KeyType: HASH

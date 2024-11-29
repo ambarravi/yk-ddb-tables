@@ -7,8 +7,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: BookingID
           AttributeType: S
-        - AttributeName: EventID
-          AttributeType: S
       KeySchema:
         - AttributeName: BookingID
           KeyType: HASH

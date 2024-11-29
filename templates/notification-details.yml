@@ -6,8 +6,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: NotificationID
           AttributeType: S
-        - AttributeName: EventID
-          AttributeType: S
       KeySchema:
         - AttributeName: NotificationID
           KeyType: HASH
