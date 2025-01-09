@@ -13,7 +13,7 @@ on:
       - "templates/organizer-table.yml" # Trigger only when DynamoDB template is changed
       - "templates/notification-details.yml" # added comment for checkin
       - "templates/city.yml" # added comment for checkin
-      - "templates/college.yml" # added comment for checkin
+      - "templates/college.yml" # Test
 
 jobs:
   deploy:
