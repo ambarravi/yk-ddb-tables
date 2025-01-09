@@ -37,3 +37,5 @@ jobs:
           aws cloudformation deploy --template-file templates/notification-details.yml --stack-name yak-notification-details-stack --capabilities CAPABILITY_NAMED_IAM
           aws cloudformation deploy --template-file templates/event-details.yml --stack-name yak-event-details-stack --capabilities CAPABILITY_NAMED_IAM
           aws cloudformation deploy --template-file templates/booking-details.yml --stack-name yak-booking-details-stack --capabilities CAPABILITY_NAMED_IAM
+          aws cloudformation deploy --template-file templates/city.yml --stack-name yak-city-details-stack --capabilities CAPABILITY_NAMED_IAM
+          aws cloudformation deploy --template-file templates/college.yml --stack-name yak-college-details-stack --capabilities CAPABILITY_NAMED_IAM
