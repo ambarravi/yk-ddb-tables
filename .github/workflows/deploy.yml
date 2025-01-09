@@ -6,12 +6,14 @@ on:
       - dev
       - main
     paths:
-      - 'templates/user-table.yml'
-      - 'templates/booking-details.yml'
-      - 'templates/category.yml'
-      - 'templates/event-details.yml'
-      - 'templates/organizer-table.yml'  # Trigger only when DynamoDB template is changed
-      - 'templates/notification-details.yml' # added comment for checkin
+      - "templates/user-table.yml"
+      - "templates/booking-details.yml"
+      - "templates/category.yml"
+      - "templates/event-details.yml"
+      - "templates/organizer-table.yml" # Trigger only when DynamoDB template is changed
+      - "templates/notification-details.yml" # added comment for checkin
+      - "templates/city.yml" # added comment for checkin
+      - "templates/college.yml" # added comment for checkin
 
 jobs:
   deploy:
@@ -19,14 +21,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Use the latest v3 version
+        uses: actions/checkout@v3 # Use the latest v3 version
 
       - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v2  # Use v2 for latest support
+        uses: aws-actions/configure-aws-credentials@v2 # Use v2 for latest support
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ github.ref == 'refs/heads/main' && 'us-west-2' || 'eu-west-1' }}   
+          aws-region: ${{ github.ref == 'refs/heads/main' && 'us-west-2' || 'eu-west-1' }}
 
       - name: Deploy DynamoDB Table
         run: |
@@ -35,4 +37,3 @@ jobs:
           aws cloudformation deploy --template-file templates/notification-details.yml --stack-name yak-notification-details-stack --capabilities CAPABILITY_NAMED_IAM
           aws cloudformation deploy --template-file templates/event-details.yml --stack-name yak-event-details-stack --capabilities CAPABILITY_NAMED_IAM
           aws cloudformation deploy --template-file templates/booking-details.yml --stack-name yak-booking-details-stack --capabilities CAPABILITY_NAMED_IAM
-
