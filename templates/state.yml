@@ -2,11 +2,11 @@ Resources:
   OrganizerTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: City
+      TableName: State
       AttributeDefinitions:
-        - AttributeName: CityID
+        - AttributeName: StateID
           AttributeType: S
       KeySchema:
-        - AttributeName: CityID
+        - AttributeName: StateID
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST # Switch to on-demand mode

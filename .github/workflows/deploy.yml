@@ -15,6 +15,7 @@ on:
       - "templates/notification-details.yml" # added comment for checkin
       - "templates/city.yml" # added comment for checkin
       - "templates/college.yml" # Test
+      - "templates/state.yml" # Test
 
 jobs:
   deploy:
